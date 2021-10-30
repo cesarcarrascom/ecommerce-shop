@@ -9,9 +9,9 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { mobile } from "../responsive.js";
 import { useLocation } from "react-router";
 import { publicRequest } from "../requestMethods";
-import { useState } from "react";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/CartRedux";
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -116,6 +116,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(null);
   const [size, setSize] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -137,9 +138,8 @@ const Product = () => {
   };
 
   const handleClick = () => {
-    // Update cart
-    
-  }
+    dispatch(addProduct({ ...product, quantity, color, size }));
+  };
 
   return (
     <Container>
