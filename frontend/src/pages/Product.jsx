@@ -5,7 +5,12 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+
 import { mobile } from "../responsive.js";
+import { useLocation } from "react-router";
+import { publicRequest } from "../requestMethods";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Container = styled.div``;
 
@@ -104,47 +109,74 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(null);
+  const [size, setSize] = useState(null);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("products/" + id);
+
+        setProduct(res.data.product);
+      } catch (error) {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleClick = () => {
+    // Update cart
+    
+  }
+
   return (
     <Container>
       <Navbar />
       <Announcement />
+
       <Wrapper>
         <ImageContainer>
-          <Image src="https://images.unsplash.com/photo-1631120120387-1bb08b134913?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=725&q=80" />
+          <Image src={product.image} />
         </ImageContainer>
         <InfoContainer>
-          <Title>Jeans</Title>
-          <Description>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
-            adipisci vel enim amet optio quia, cupiditate soluta obcaecati
-            nihil. Facere est nemo a dolores facilis hic sit dolor officiis
-            nulla.
-          </Description>
-          <Price>$29.99</Price>
+          <Title>{product.title}</Title>
+          <Description>{product.description}</Description>
+          <Price>$ {product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="lightblue" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {product.color?.map((c) => (
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSizeSelect>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
+              <FilterSizeSelect onChange={(e) => setSize(e.target.value)}>
+                {product.size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
               </FilterSizeSelect>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <RemoveIcon />
-              <Amount>1</Amount>
-              <AddIcon />
+              <RemoveIcon onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <AddIcon onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
