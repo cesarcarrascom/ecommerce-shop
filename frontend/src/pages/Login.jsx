@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -46,13 +47,6 @@ const Button = styled.button`
   margin-bottom: 5px;
 `;
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
-
 const Login = () => {
   return (
     <Container>
@@ -63,8 +57,10 @@ const Login = () => {
           <Input placeholder="Password..." />
 
           <Button>LOGIN</Button>
-          <Link>FORGOT YOUR PASSWORD? CLICK HERE.</Link>
-          <Link>NOT REGISTERED YET? SIGN UP HERE</Link>
+
+          <Link to="/register" className="link">
+            Not registered yet? Sign up here!
+          </Link>
         </Form>
       </Wrapper>
     </Container>

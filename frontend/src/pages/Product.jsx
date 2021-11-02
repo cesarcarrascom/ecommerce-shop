@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Announcement from "../components/Announcement";
+
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -12,6 +11,8 @@ import { publicRequest } from "../requestMethods";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/CartRedux";
+import { products } from "../data";
+
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -116,15 +117,12 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(null);
   const [size, setSize] = useState(null);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    const getProduct = async () => {
-      try {
-        const res = await publicRequest.get("products/" + id);
-
-        setProduct(res.data.product);
-      } catch (error) {}
+    const getProduct = () => {
+      const res = products.find((p) => p.id == id);
+      setProduct(res);
     };
     getProduct();
   }, [id]);
@@ -138,14 +136,11 @@ const Product = () => {
   };
 
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity, color, size }));
+    //   dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
   return (
     <Container>
-      <Navbar />
-      <Announcement />
-
       <Wrapper>
         <ImageContainer>
           <Image src={product.image} />

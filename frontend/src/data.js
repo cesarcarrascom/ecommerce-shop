@@ -76,3 +76,36 @@ export const popularProducts = [
       "https://images.unsplash.com/photo-1633373565755-ff97e7b5f91b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80",
   },
 ];
+
+export const products = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    name: "Incredible wireless headsets",
+    description: "Best wireless headsets in the market.",
+    price: "149.99",
+    color: ["black", "blue", "pink"],
+    size: ["S", "M", "L"],
+  },
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1550009158-9ebf69173e03?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1501&q=80",
+    name: "Mouse and Keyboard combo",
+    description: "Best wireless mouse and keyboard combo in the market.",
+    price: "299.99",
+    color: ["black", "gray", "purple"],
+    size: ["S", "M", "L"],
+  },
+  {
+    id: 3,
+    image:
+      "https://images.unsplash.com/photo-1603732551658-5fabbafa84eb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    name: "Arduino chipset",
+    description: "Best wireless Arduino chipset in the market.",
+    price: "99.99",
+    color: ["black", "gray", "blue"],
+    size: ["S", "M", "L"],
+  },
+];

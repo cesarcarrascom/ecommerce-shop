@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -38,18 +39,18 @@ const Input = styled.input`
   padding: 10px;
 `;
 
-const Agreement = styled.span`
-  font-size: 12px;
-  margin: 20px 0px;
-`;
-
-const Button = styled.button`
+const SubmitButton = styled.button`
   width: 40%;
+  margin: 5px 0px;
   border: none;
   padding: 15px 20px;
   background-color: teal;
   color: white;
   cursor: pointer;
+`;
+
+const LoginText = styled.span`
+  text-decoration: none;
 `;
 
 const Register = () => {
@@ -64,12 +65,12 @@ const Register = () => {
           <Input placeholder="Email..." />
           <Input placeholder="Password..." />
           <Input placeholder="Confirm Password..." />
-          <Agreement>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel,
-            repudiandae.
-          </Agreement>
-          <Button>REGISTER</Button>
+
+          <SubmitButton>REGISTER</SubmitButton>
         </Form>
+        <Link className="link" to="/login">
+          <LoginText>Already registered? Log in...</LoginText>
+        </Link>
       </Wrapper>
     </Container>
   );

@@ -110,16 +110,15 @@ const Footer = () => {
       <Right>
         <Title>Contact</Title>
         <ContactItem>
-          <HomeOutlined style={{ marginRight: "10px" }} /> Concepcion, Bio bio,
-          Chile
+          <HomeOutlined style={{ marginRight: "10px" }} /> Santiago, Chile
         </ContactItem>
         <ContactItem>
-          <LocalPhoneOutlinedIcon style={{ marginRight: "10px" }} /> + 56 1234
-          5678
+          <LocalPhoneOutlinedIcon style={{ marginRight: "10px" }} /> + 569 3577
+          8400
         </ContactItem>
         <ContactItem>
           <EmailOutlinedIcon style={{ marginRight: "10px" }} />
-          contact@cesar.dev
+          cc.cesar94@gmail.com
         </ContactItem>
         <Payment src="https://store-cdn.arduino.cc/uni/wysiwyg/Payment_Options.jpg" />
       </Right>
