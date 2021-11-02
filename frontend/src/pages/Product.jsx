@@ -1,13 +1,11 @@
 import styled from "styled-components";
-import Newsletter from "../components/Newsletter";
-import Footer from "../components/Footer";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 import { mobile } from "../responsive.js";
 import { useLocation } from "react-router";
-import { publicRequest } from "../requestMethods";
+// import { publicRequest } from "../requestMethods";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/CartRedux";
@@ -117,7 +115,7 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(null);
   const [size, setSize] = useState(null);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = () => {
@@ -136,7 +134,7 @@ const Product = () => {
   };
 
   const handleClick = () => {
-    //   dispatch(addProduct({ ...product, quantity, color, size }));
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
   return (
@@ -175,8 +173,6 @@ const Product = () => {
           </AddContainer>
         </InfoContainer>
       </Wrapper>
-      <Newsletter />
-      <Footer />
     </Container>
   );
 };

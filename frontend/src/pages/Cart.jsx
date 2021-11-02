@@ -168,14 +168,12 @@ const Cart = () => {
   }, [stripeToken, cart.total, history]);
   return (
     <Container>
-      <Announcement />
-      <Navbar />
       <Wrapper>
         <Title>YOUR CART</Title>
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTextContainer>
-            <TopText>Shopping Cart (2)</TopText>
+            <TopText>Shopping Cart ({cart.quantity})</TopText>
             <TopText>Your Whislist (0)</TopText>
           </TopTextContainer>
           <TopButton filled>CHECK OUT NOW</TopButton>

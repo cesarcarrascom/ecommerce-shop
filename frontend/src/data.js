@@ -2,25 +2,25 @@ export const sliderItems = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1631323860856-bd997ef7e60c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1528&q=80",
+      "https://images.unsplash.com/photo-1586062129117-08db958ba215?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
     title: "SUMMER SALE",
-    description: "DONT' COMPROMISE ON STYLE",
+    description: "DON'T COMPROMISE ON STYLE",
     background: "f5fafd",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1633117876849-764eb32d54e7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1528&q=80",
+      "https://images.unsplash.com/photo-1601751839329-dd71d6428a5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80",
     title: "AUTUMN COLLECTION",
-    description: "DONT' COMPROMISE ON STYLE",
+    description: "DON'T COMPROMISE ON STYLE",
     background: "f5fafd",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1633285718604-11e91bc5b126?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80",
+      "https://images.unsplash.com/photo-1600201049294-bafdf156d73f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=736&q=80",
     title: "POPULAR SALE",
-    description: "DONT' COMPROMISE ON STYLE",
+    description: "DON'T COMPROMISE ON STYLE",
     background: "f5fafd",
   },
 ];
@@ -29,23 +29,20 @@ export const categories = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1633118186879-a0952f1e2f66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=387&q=80",
-    title: "SHIRT STYLE!",
-    name: "women",
+      "https://images.unsplash.com/photo-1547489401-fcada4966052?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    name: "Electronics",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1631120120387-1bb08b134913?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=725&q=80",
-    title: "Skirt STYLE!",
-    name: "jeans",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    name: "Audio",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1633117992480-91cc79911aad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=465&q=80",
-    title: "HAT STYLE!",
-    name: "men",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
+    name: "CPU",
   },
 ];
 
@@ -87,6 +84,7 @@ export const products = [
     price: "149.99",
     color: ["black", "blue", "pink"],
     size: ["S", "M", "L"],
+    category: ["Electronics", "Audio", "Wireless"],
   },
   {
     id: 2,
@@ -96,7 +94,9 @@ export const products = [
     description: "Best wireless mouse and keyboard combo in the market.",
     price: "299.99",
     color: ["black", "gray", "purple"],
+
     size: ["S", "M", "L"],
+    category: ["Electronics", "Wireless"],
   },
   {
     id: 3,
@@ -107,5 +107,6 @@ export const products = [
     price: "99.99",
     color: ["black", "gray", "blue"],
     size: ["S", "M", "L"],
+    category: ["Electronics", "CPU"],
   },
 ];

@@ -6,7 +6,7 @@ import { HomeOutlined } from "@mui/icons-material";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { mobile } from "../responsive";
-
+import { categories } from "../data";
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })};
@@ -103,8 +103,9 @@ const Footer = () => {
         <List>
           <ListItem>HOME</ListItem>
           <ListItem>CART</ListItem>
-          <ListItem>MEN'S FASHION</ListItem>
-          <ListItem>WOMEN'S FASHION</ListItem>
+          {categories.map((c) => (
+            <ListItem>{c.name}</ListItem>
+          ))}
         </List>
       </Center>
       <Right>

@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 import Products from "../components/Products";
-import Newsletter from "../components/Newsletter";
-import Footer from "../components/Footer";
+
 import { mobile } from "../responsive";
 import { useLocation } from "react-router";
 import { useState } from "react";
@@ -72,15 +71,12 @@ const ProductList = () => {
         <Filter>
           <FilterText>Sort Products:</FilterText>
           <Select onChange={(e) => setSort(e.target.value)}>
-            <Option value="newest">Newest</Option>
             <Option value="asc">Price (asc)</Option>
             <Option value="desc">Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products category={category} filters={filters} sort={sort} />
-      <Newsletter />
-      <Footer />
+      <Products filters={filters} sort={sort} />
     </Container>
   );
 };
