@@ -109,7 +109,8 @@ const Button = styled.button`
 
 const Product = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
+  let id = location.pathname.split("/")[3];
+  id = +id;
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
@@ -118,8 +119,10 @@ const Product = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const getProduct = () => {
-      const res = products.find((p) => p.id == id);
+      const res = products.find((p) => p.id === id);
       setProduct(res);
     };
     getProduct();

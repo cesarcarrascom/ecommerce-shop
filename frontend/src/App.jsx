@@ -14,7 +14,7 @@ import "./App.css";
 import Success from "./pages/Success";
 import Announcement from "./components/Announcement";
 import Navbar from "./components/Navbar";
-import Newsletter from "./components/Newsletter";
+
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -24,30 +24,32 @@ const App = () => {
       <Announcement />
       <Navbar />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/shop">
           <Home />
         </Route>
-        <Route path="/products">
+        <Route path="/shop/products">
           <ProductList />
         </Route>
-        <Route path="/products/:category">
+        <Route path="/shop/products/:category">
           <ProductList />
         </Route>
-        <Route path="/product/:id">
+        <Route path="/shop/product/:id">
           <Product />
         </Route>
-        <Route path="/cart">
+        <Route path="/shop/cart">
           <Cart />
         </Route>
-        <Route path="/success">
+        <Route path="/shop/success">
           <Success />
         </Route>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
-        <Route path="/register">
-          {user ? <Redirect to="/" /> : <Register />}
+        <Route path="/shop/login">
+          {user ? <Redirect to="/shop" /> : <Login />}
+        </Route>
+        <Route path="/shop/register">
+          {user ? <Redirect to="/shop" /> : <Register />}
         </Route>
       </Switch>
-      <Newsletter />
+
       <Footer />
     </Router>
   );

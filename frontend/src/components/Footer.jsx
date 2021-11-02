@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
+import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { HomeOutlined } from "@mui/icons-material";
@@ -7,6 +8,7 @@ import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { mobile } from "../responsive";
 import { categories } from "../data";
+import { Link } from "react-router-dom";
 const Container = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column" })};
@@ -37,6 +39,7 @@ const SocialIcon = styled.div`
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  cursor: pointer;
 `;
 
 const Center = styled.div`
@@ -80,21 +83,27 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>SHOP</Logo>
+        <Logo>WORK IN PROGRESS</Logo>
         <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-          molestiae distinctio rerum totam, deserunt deleniti praesentium
-          doloribus corporis cupiditate sit a quisquam facere ut possimus.
+          I'm building a full stack e-commerce using React, Redux, Nodejs &
+          MongoDB. It will feature User authentication, products filtering and
+          sorting and Cart checkout using Stripe.
         </Description>
         <SocialContainer>
-          <SocialIcon color="3B5999">
-            <FacebookIcon />
+          <SocialIcon color="171717">
+            <a className="link" href="https://github.com/cesarcarrascom">
+              <GitHubIcon />
+            </a>
           </SocialIcon>
           <SocialIcon color="E4405F">
-            <InstagramIcon />
+            <a className="link" href="https://instagram.com/cesarcarrascom">
+              <InstagramIcon />
+            </a>
           </SocialIcon>
           <SocialIcon color="55ACEE">
-            <TwitterIcon />
+            <a className="link" href="https://twitter.com/cesarcarrascom">
+              <TwitterIcon />
+            </a>
           </SocialIcon>
         </SocialContainer>
       </Left>
@@ -104,7 +113,11 @@ const Footer = () => {
           <ListItem>HOME</ListItem>
           <ListItem>CART</ListItem>
           {categories.map((c) => (
-            <ListItem>{c.name}</ListItem>
+            <ListItem>
+              <Link className="link" to={`/shop/products/${c.name}`}>
+                {c.name}
+              </Link>
+            </ListItem>
           ))}
         </List>
       </Center>

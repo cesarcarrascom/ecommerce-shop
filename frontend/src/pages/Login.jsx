@@ -58,7 +58,7 @@ const Login = () => {
 
           <Button>LOGIN</Button>
 
-          <Link to="/register" className="link">
+          <Link to="/shop/register" className="link">
             Not registered yet? Sign up here!
           </Link>
         </Form>

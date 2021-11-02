@@ -2,16 +2,16 @@ export const sliderItems = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1586062129117-08db958ba215?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80",
-    title: "SUMMER SALE",
+      "https://images.unsplash.com/photo-1601751839329-dd71d6428a5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80",
+    title: "AUTUMN COLLECTION",
     description: "DON'T COMPROMISE ON STYLE",
     background: "f5fafd",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1601751839329-dd71d6428a5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1374&q=80",
-    title: "AUTUMN COLLECTION",
+      "https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80",
+    title: "SUMMER SALE",
     description: "DON'T COMPROMISE ON STYLE",
     background: "f5fafd",
   },

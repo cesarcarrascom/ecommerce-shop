@@ -68,7 +68,7 @@ const Register = () => {
 
           <SubmitButton>REGISTER</SubmitButton>
         </Form>
-        <Link className="link" to="/login">
+        <Link className="link" to="/shop/login">
           <LoginText>Already registered? Log in...</LoginText>
         </Link>
       </Wrapper>

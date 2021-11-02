@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import Navbar from "../components/Navbar";
-import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -155,6 +153,7 @@ const Cart = () => {
     setStripeToken(token);
   };
   useEffect(() => {
+    window.scrollTo(0, 0);
     const makeRequest = async () => {
       try {
         const res = await userRequest.post("/checkout/payment", {
