@@ -12,7 +12,7 @@ const {
 router.route("/").get(getAllProducts).post(isAuthenticated, createProduct);
 router
   .route("/:id")
-  .get(isAuthenticated, getProduct)
+  .get(getProduct)
   .put(isAuthenticated, updateProduct)
   .delete(isAuthenticated, deleteProduct);
 

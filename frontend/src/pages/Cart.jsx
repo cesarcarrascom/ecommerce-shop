@@ -7,10 +7,11 @@ import StripeCheckout from "react-stripe-checkout";
 import { userRequest } from "../requestMethods";
 
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useHistory } from "react-router";
+import { clearCart, removeProduct } from "../redux/CartRedux";
 
 const StripePublishable =
   "pk_test_51JjXzQB7juOpVsW3wIdwjYHqfjPnrv78c2BikIYvtBesX6XvoMcqtEjYI8UGq0jOcngebyieaJN0pa7SzU5FL3uA00O6iGbpkQ";
@@ -47,6 +48,7 @@ const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
+  color: red;
 `;
 
 const Bottom = styled.div`
@@ -111,6 +113,10 @@ const ProductPrice = styled.div`
   ${mobile({ marginBottom: "20px" })};
 `;
 
+const ProductDelete = styled.div`
+color: red; margin-top: 10px; cursor: pointer;
+`
+
 const Hr = styled.hr`
   background-color: #eee;
   border: none;
@@ -145,6 +151,7 @@ const SummaryButton = styled.button`
 `;
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const shipping = 9.99;
   const shippingDiscount = 9.99;
   const [stripeToken, setStripeToken] = useState(null);
@@ -165,21 +172,30 @@ const Cart = () => {
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, history]);
+
+  const handleClearCart = () => {
+    console.log("clearing")
+    dispatch(clearCart())
+  }
+  const handleRemoveFromCart = (product) => {
+    dispatch(removeProduct(product))
+  }
+
   return (
     <Container>
       <Wrapper>
         <Title>YOUR CART</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => handleClearCart()}>Empty your cart</TopButton>
           <TopTextContainer>
-            <TopText>Shopping Cart ({cart.quantity})</TopText>
-            <TopText>Your Whislist (0)</TopText>
+
+            {/* <TopText onCLick={() => handleClearCart()}>Empty your cart</TopText> */}
           </TopTextContainer>
-          <TopButton filled>CHECK OUT NOW</TopButton>
+
         </Top>
         <Bottom>
           <Info>
-            {cart.products?.map((product) => (
+            {cart.products.map((product) => (
               <>
                 <Product>
                   <ProductDetail>
@@ -208,6 +224,7 @@ const Cart = () => {
                     <ProductPrice>
                       $ {product.price * product.quantity}
                     </ProductPrice>
+                    <ProductDelete onClick={() => handleRemoveFromCart(product)}>Remove</ProductDelete>
                   </PriceDetail>
                 </Product>
                 <Hr />

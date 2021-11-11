@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const UserSlice = createSlice({
   name: "user",
   initialState: {
@@ -20,8 +19,22 @@ const UserSlice = createSlice({
       state.error = true;
       state.isFetching = false;
     },
+    logoutSuccess: (state) => {
+      state.isFetching = false;
+      state.error = false;
+      state.currentUser = null;
+    },
+    logoutFailure: (state) => {
+      state.error = true;
+    },
   },
 });
 
-export const { loginStart, loginFailure, loginSuccess } = UserSlice.actions;
+export const {
+  loginStart,
+  loginFailure,
+  loginSuccess,
+  logoutSuccess,
+  logoutFailure,
+} = UserSlice.actions;
 export default UserSlice.reducer;

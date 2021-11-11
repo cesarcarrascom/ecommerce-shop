@@ -142,6 +142,8 @@ const Product = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
+  console.log(product)
+
   return (
     <Container>
       <Wrapper>
