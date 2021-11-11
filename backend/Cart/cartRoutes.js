@@ -1,8 +1,7 @@
 const router = require("express").Router();
 
 const {
-  isAuthenticatedAndAuthorized,
-  isAuthenticatedAndAdmin,
+  authorizeRoles,
   isAuthenticated,
 } = require("../middleware/authentication");
 
@@ -14,10 +13,15 @@ const {
   getAllCarts,
 } = require("./cartController");
 
-router.get("/", isAuthenticatedAndAdmin, getAllCarts);
-router.post("/", isAuthenticated, createCart);
-router.put("/:id", isAuthenticatedAndAuthorized, updateCart);
-router.delete("/:id", isAuthenticatedAndAuthorized, deleteCart);
-router.get("/:id", isAuthenticatedAndAuthorized, getUserCart);
+router
+  .route("/")
+  .get(isAuthenticated, authorizeRoles("admin"), getAllCarts)
+  .post(isAuthenticated, createCart);
+
+router
+  .route("/:id")
+  .get(isAuthenticated, getUserCart)
+  .put(isAuthenticated, updateCart)
+  .delete(isAuthenticated, deleteCart);
 
 module.exports = router;

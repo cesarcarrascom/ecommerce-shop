@@ -10,6 +10,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
+const cookieParser = require("cookie-parser");
 
 // Routers
 const userRouter = require("./User/userRoutes");
@@ -32,6 +33,7 @@ app.use(
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser(process.env.JWT_SECRET));
 
 // Routes
 app.use("/api/v1/users", userRouter);

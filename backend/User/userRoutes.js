@@ -1,7 +1,9 @@
 const router = require("express").Router();
+
 const {
-  isAuthenticatedAndAuthorized,
-  isAuthenticatedAndAdmin,
+  isAuthenticated,
+  isAuthorized,
+  authorizeRoles,
 } = require("../middleware/authentication");
 
 const {
@@ -12,10 +14,14 @@ const {
   getUserStats,
 } = require("./userController");
 
-router.put("/:id", isAuthenticatedAndAuthorized, updateUser);
-router.delete("/:id", isAuthenticatedAndAuthorized, deleteUser);
-router.get("/", isAuthenticatedAndAdmin, getAllUsers);
-router.get("/stats", isAuthenticatedAndAdmin, getUserStats);
-router.get("/:id", isAuthenticatedAndAdmin, getUser);
+router.get("/", isAuthenticated, authorizeRoles("admin"), getAllUsers);
+
+router
+  .route("/:id")
+  .get(isAuthenticated, isAuthorized, getUser)
+  .put(isAuthenticated, isAuthorized, updateUser)
+  .delete(isAuthenticated, isAuthorized, deleteUser);
+
+router.get("/stats", isAuthenticated, authorizeRoles("admin"), getUserStats);
 
 module.exports = router;

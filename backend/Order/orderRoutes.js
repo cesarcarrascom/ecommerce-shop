@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
 const {
-  isAuthenticatedAndAuthorized,
-  isAuthenticatedAndAdmin,
+  isAuthorized,
+  authorizeRoles,
   isAuthenticated,
 } = require("../middleware/authentication");
 
@@ -15,11 +15,21 @@ const {
   getMonthlyIncome,
 } = require("./orderController");
 
-router.post("/", isAuthenticated, createOrder);
-router.put("/:id", isAuthenticatedAndAdmin, updateOrder);
-router.delete("/:id", isAuthenticatedAndAdmin, deleteOrder);
-router.get("/", isAuthenticatedAndAdmin, getAllOrders);
-router.get("/income", isAuthenticatedAndAdmin, getMonthlyIncome);
-router.get("/:id", isAuthenticatedAndAuthorized, getUserOrder);
+router
+  .route("/")
+  .get(isAuthenticated, authorizeRoles("admin"), getAllOrders)
+  .post(isAuthenticated, createOrder);
 
+router
+  .route("/:id")
+  .get(isAuthorized, getUserOrder)
+  .put(isAuthenticated, authorizeRoles("admin"), updateOrder)
+  .delete(isAuthenticated, authorizeRoles("admin"), deleteOrder);
+
+router.get(
+  "/income",
+  isAuthenticated,
+  authorizeRoles("admin"),
+  getMonthlyIncome
+);
 module.exports = router;

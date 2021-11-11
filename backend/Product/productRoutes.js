@@ -1,8 +1,5 @@
 const router = require("express").Router();
-const {
-  isAuthenticatedAndAuthorized,
-  isAuthenticatedAndAdmin,
-} = require("../middleware/authentication");
+const { isAuthenticated } = require("../middleware/authentication");
 
 const {
   getAllProducts,
@@ -12,10 +9,11 @@ const {
   deleteProduct,
 } = require("./productController");
 
-router.get("/", getAllProducts);
-router.post("/", isAuthenticatedAndAuthorized, createProduct);
-router.get("/:id", getProduct);
-router.put("/:id", isAuthenticatedAndAuthorized, updateProduct);
-router.delete("/:id", isAuthenticatedAndAuthorized, deleteProduct);
+router.route("/").get(getAllProducts).post(isAuthenticated, createProduct);
+router
+  .route("/:id")
+  .get(isAuthenticated, getProduct)
+  .put(isAuthenticated, updateProduct)
+  .delete(isAuthenticated, deleteProduct);
 
 module.exports = router;
