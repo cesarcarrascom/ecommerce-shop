@@ -112,9 +112,9 @@ const Footer = () => {
         <List>
           <ListItem>HOME</ListItem>
           <ListItem>CART</ListItem>
-          {categories.map((c) => (
+          {categories?.map((c) => (
             <ListItem>
-              <Link className="link" to={`/shop/products/${c.name}`}>
+              <Link className="link" key={c} to={`/shop/products/${c.name}`}>
                 {c.name}
               </Link>
             </ListItem>

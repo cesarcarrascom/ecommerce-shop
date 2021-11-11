@@ -5,11 +5,11 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 import { mobile } from "../responsive.js";
 import { useLocation } from "react-router";
-// import { publicRequest } from "../requestMethods";
+import { publicRequest } from "../requestMethods";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/CartRedux";
-import { products } from "../data";
+// import { products } from "../data";
 
 const Container = styled.div``;
 
@@ -110,7 +110,7 @@ const Button = styled.button`
 const Product = () => {
   const location = useLocation();
   let id = location.pathname.split("/")[3];
-  id = +id;
+  // id = +id;
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
@@ -121,9 +121,11 @@ const Product = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    const getProduct = () => {
-      const res = products.find((p) => p.id === id);
-      setProduct(res);
+    const getProduct = async () => {
+      // const res = products.find((p) => p.id === id);
+      const res = await publicRequest.get(`products/${id}`)
+      // console.log(res.data.product)
+      setProduct(res.data.product);
     };
     getProduct();
   }, [id]);

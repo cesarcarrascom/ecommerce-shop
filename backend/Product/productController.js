@@ -4,6 +4,7 @@ const { StatusCodes } = require("http-status-codes");
 
 const getAllProducts = async (req, res) => {
   const { sort, name, numericFilters, category, newest } = req.query;
+
   const queryObject = {};
 
   newest ? (queryObject.newest = true) : false;
@@ -32,6 +33,7 @@ const getAllProducts = async (req, res) => {
     );
 
     const options = ["price"];
+    
     // Destructure query into 3 variables. -> price, $gt, 50
     filters = filters.split(",").map((item) => {
       const [field, operator, value] = item.split("-");

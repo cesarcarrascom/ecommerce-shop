@@ -30,7 +30,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide a password."],
       minLength: 4,
-      select: false,
     },
     isAdmin: { type: Boolean, default: false },
   },
@@ -52,11 +51,8 @@ UserSchema.methods.createJWT = function () {
   );
 };
 
-UserSchema.methods.comparePassword = async function (
-  inputPassword,
-  savedPassword
-) {
-  const isMatch = await bcrypt.compare(inputPassword, savedPassword);
+UserSchema.methods.comparePassword = async function (inputPassword) {
+  const isMatch = await bcrypt.compare(inputPassword, this.password);
   return isMatch;
 };
 

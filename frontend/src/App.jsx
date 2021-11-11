@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import {useSelector} from 'react-redux'
 import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
 import Home from "./pages/Home";
@@ -18,7 +19,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const App = () => {
-  const user = false;
+  const user = useSelector((state)=>state.user.currentUser);
+  console.log(user)
   return (
     <Router>
       <Announcement />
